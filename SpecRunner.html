@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC >
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.0/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-1.0.0/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.0.0/jasmine-html.js"></script>
+
+  <script type="text/javascript" src="wordFinder.js"></script>
+
+  <script type="text/javascript" src="wordFinderSpec.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+</body>
+</html>
