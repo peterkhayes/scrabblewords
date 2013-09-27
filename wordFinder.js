@@ -6,9 +6,7 @@ var makeWordFinder = function(hand, wordList) {
       var foundWords = [];
       for (var i = 0; i < this.handPermutations.length; i++) {
         var testWord = this.handPermutations[i];
-        var bucket = this.wordHashTable[hashItem(testWord)];
-
-        if (bucket && bucket.indexOf(testWord) !== -1) {
+        if (this.wordHashTable[testWord]) {
           foundWords.push(testWord);
         }
       }
@@ -34,27 +32,10 @@ var getPermutations = function (array) {
   return result;
 };
 
-
-var hashArray = function(array) {
-  var hashTable = [];
-  for (var i = 0, len = array.length; i < len; i++) {
-    var word = array[i];
-    var hashCode = hashItem(word);
-    if (hashTable[hashCode]) {
-      hashTable[hashCode].push(word);
-    } else {
-      hashTable[hashCode] = [word];
-    }
+var hashArray = function (list) {
+  var wordHashTable = {};
+  for (var i = 0, len = list.length; i < len; i++) {
+    wordHashTable[list[i]] = true;
   }
-  return hashTable;
-};
-
-var hashItem = function(str){
-  var hash = 0;
-  for (var i = 0; i < str.length; i++) {
-    hash = (hash<<5) + hash + str.charCodeAt(i);
-    hash = hash & hash; // Convert to 32bit integer
-    hash = Math.abs(hash);
-  }
-  return hash % 20000;
-};
+  return wordHashTable;
+}
